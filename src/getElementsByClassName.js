@@ -9,10 +9,18 @@ var getElementsByClassName = function(className
   // your code here
   var resultElements = [];
   var elementsArray = document.body.childNodes;
-  for(var i of elementsArray) {
-    if(i.classList != undefined && i.classList.contains(className)) {
-      resultElements.push(i);
+
+  var recursiveFun = function(elements) {
+    for(var i of elements) {
+      if(i.classList !== undefined && i.classList.contains(className)) {
+        resultElements.push(i);
+        recursiveFun(i.childNodes);
+      }
+      if(i.classList !== undefined) {
+        recursiveFun(i.childNodes);
+      }
     }
-  }
+  };
+  recursiveFun(elementsArray);
   return resultElements;
 };
