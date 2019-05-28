@@ -35,12 +35,16 @@ var stringifyJSON = function(obj) {
   if(typeof obj === 'object') {
     var sub = '{';
     for(var i in obj) {
-      sub += stringifyJSON(i) + ':' + stringifyJSON(obj[i]) + ',';
+      if(typeof obj[i] === 'function' || obj[i] === undefined) {
+        sub = '';
+      } else {
+          sub += stringifyJSON(i) + ':' + stringifyJSON(obj[i]) + ',';
+      }
     }
     sub = sub.slice(0, sub.length - 1);
     sub += '}';
-    if (sub === '}') {
-      sub = 'null';
+    if (sub === '}') {    //result of an empty object
+      sub = '{}';
     }
     return sub;
   }
