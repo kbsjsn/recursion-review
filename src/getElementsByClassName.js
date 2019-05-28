@@ -10,7 +10,7 @@ var getElementsByClassName = function(className
   var resultElements = [];
   var elementsArray = document.body.childNodes;
   for(var i of elementsArray) {
-    if(i !== undefined && i.classList.contains(className)) {
+    if(i.classList != undefined && i.classList.contains(className)) {
       resultElements.push(i);
     }
   }
