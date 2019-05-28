@@ -13,16 +13,14 @@ var stringifyJSON = function(obj) {
     return '' + obj;
   }
 
-  if(Array.isArray(obj) && obj.length === 0) {
-    return '[]';
-  }
-
   if(obj == undefined || obj == null) {
     return'null';
   }
-
   
   if(Array.isArray(obj)) {
+    if(obj.length === 0) {
+      return '[]';
+    }
     var sub = '[';
     for(var i of obj) {
       sub += stringifyJSON(i) + ',';
