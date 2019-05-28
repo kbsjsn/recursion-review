@@ -5,4 +5,20 @@
 
 var stringifyJSON = function(obj) {
   // your code goes here
+  
+
+  if(obj typeof Number || obj typeof Boolean) {
+    return '' + obj;
+  }
+
+  if(obj == undefined) {
+    return null;
+  }
+  
+  if(obj typeof Array) {
+    var sub = '[';
+    
+  } else if(obj typeof Object) {
+    var sub = '{';
+  }
 };
