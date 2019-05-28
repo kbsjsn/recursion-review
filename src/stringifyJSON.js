@@ -5,7 +5,9 @@
 
 var stringifyJSON = function(obj) {
   // your code goes here
-  
+  if(obj typeof String) {
+    return obj;
+  }
 
   if(obj typeof Number || obj typeof Boolean) {
     return '' + obj;
@@ -17,8 +19,18 @@ var stringifyJSON = function(obj) {
   
   if(obj typeof Array) {
     var sub = '[';
+    for(var i of obj) {
+      sub += stringifyJSON(i) + ',';
+    }
+    sub += ']';
+    return sub;
     
   } else if(obj typeof Object) {
     var sub = '{';
+    for(var i in obj) {
+      sub += stringifyJSON(i) + ':' + stringifyJSON(obj[i]) + ',';
+    }
+    sub += '}';
+    return sub;
   }
 };
