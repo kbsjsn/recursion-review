@@ -16,7 +16,7 @@ var getElementsByClassName = function(className
         resultElements.push(i);
         recursiveFun(i.childNodes);
       }
-      if(i.classList !== undefined) {
+      else if(i.classList !== undefined) {
         recursiveFun(i.childNodes);
       }
     }
